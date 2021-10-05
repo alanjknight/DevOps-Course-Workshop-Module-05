@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  cliapp:
+    build:
+      context: .
+      dockerfile: Dockerfile.cliapp
+  webapp:
+    build:
+      context: .
+      dockerfile: Dockerfile.webapp
+  redis:
+    image: "redis:latest"
+  nginx:
+    image: "nginx:latest" 
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d
+    ports:
+      - 8082:80
+
+
